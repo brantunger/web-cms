@@ -1,0 +1,32 @@
+.alert-banner {
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 15px;
+  }
+  
+  .message {
+    padding: 10px 0;
+    flex-grow: 1;
+  }
+  
+  .error {
+    background-color: #fae0e0;
+    box-shadow: 5px 0 inset red;
+  }
+  
+  .success {
+    background-color: #ceffcc;
+    box-shadow: 5px 0 inset green;
+  }
+  
+  ::ng-deep .icon-success {
+    color: green;
+  }
+  
+  ::ng-deep .icon-error {
+    color: red;
+  }
+  

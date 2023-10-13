@@ -1,0 +1,31 @@
+<app-alert-banner viewLabel="app-login-dialog"></app-alert-banner>
+<h1 mat-dialog-title>Login</h1>
+<mat-dialog-content>
+  <form [formGroup]="formGroup" (keydown.enter)="$event.preventDefault()">
+    <mat-form-field>
+      <mat-label>Username</mat-label>
+      <input matInput formControlName="usernameInput" type="text" autocomplete="off" />
+      <mat-icon matSuffix>face</mat-icon>
+      <mat-error>
+        Username is required to login.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input matInput formControlName="passwordInput" (keyup.enter)="login()" type="{{passwordInputType}}"
+        autocomplete="off" />
+      <mat-error>
+        Password is required to login.
+      </mat-error>
+      <button mat-icon-button matSuffix (click)="toggleShowPassword()">
+        <mat-icon *ngIf="showPassword">visibility_off</mat-icon>
+        <mat-icon *ngIf="!showPassword">visibility</mat-icon>
+      </button>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="center">
+  <button mat-raised-button color="accent" (click)="login()" [disabled]="this.formGroup.invalid">Login</button>
+  <button mat-button color="accent" [mat-dialog-close]="true">Cancel</button>
+</mat-dialog-actions>
