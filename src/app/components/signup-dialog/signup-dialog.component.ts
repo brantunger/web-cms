@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { take } from 'rxjs';
 import { User } from 'src/app/models/User';
 import { AlertService } from 'src/app/services/alert.service';
@@ -20,6 +20,7 @@ export class SignupDialogComponent {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
+    private dialogRef: MatDialogRef<SignupDialogComponent>,
     private formBuilder: FormBuilder,
     private webApiService: WebApiService,
     private alertService: AlertService) {
@@ -64,7 +65,7 @@ export class SignupDialogComponent {
       .register(user)
       .pipe(take(1))
       .subscribe({
-        next: () => this.alertService.success('app-signup-dialog', 'Registration Successful'),
+        next: () => this.dialogRef.close(),
         error: (error: HttpErrorResponse) => this.alertService.error('app-signup-dialog', error.error.error)
       });
 
