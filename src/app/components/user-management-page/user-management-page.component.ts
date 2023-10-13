@@ -7,7 +7,6 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { take } from 'rxjs';
 import { User } from 'src/app/models/User';
-import { UserManagementDialogData } from 'src/app/models/UserManagementDialogData';
 import { WebApiService } from 'src/app/services/web-api.service';
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 import { UserManagementDialogComponent } from './user-management-dialog/user-management-dialog.component';
@@ -68,13 +67,6 @@ export class UserManagementPageComponent {
       enterAnimationDuration: 400,
       exitAnimationDuration: 400
     });
-
-    dialogRef.afterClosed()
-      .subscribe((result: UserManagementDialogData) => {
-        if (result.action === 'save') {
-          console.log(result.user);
-        }
-      });
   }
 
   deleteUser(userId: number): void {
